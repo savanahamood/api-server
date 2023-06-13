@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const foodRouter = express.Router();
 const { Food } = require('../models/index');

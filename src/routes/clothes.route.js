@@ -1,3 +1,5 @@
+'use strict';
+
 const express = require('express');
 const clothesRouter = express.Router();
 const { Clothes } = require('../models/index');
