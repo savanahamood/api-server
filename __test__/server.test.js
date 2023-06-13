@@ -59,5 +59,8 @@ describe('testing my server', () => {
 });
 
 afterAll(async () => {
-    await db.drop();
+    await db.drop().catch((err) => {
+        // Handle the promise rejection if it occurs during the cleanup process.
+        console.error('Error occurred while dropping the database:', err);
+      });
 });
