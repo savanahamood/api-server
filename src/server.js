@@ -13,6 +13,7 @@ const errorHandler = require('./handlers/500');
 
 app.get('/', welcomeHandler);
 function welcomeHandler(req, res) {
+    
     res.status(200).send('hi');
 }
 app.use('*', notFoundHandler);
