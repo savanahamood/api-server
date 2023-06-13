@@ -13,38 +13,66 @@ clothesRouter.delete("/clothes/:id", deleteclothe);
 
 
 async function getclothes(req, res) {
-    let clothesResult = await Clothes.findAll();
-    res.status(200).json(clothesResult);
+    try{
+
+        let clothesResult = await Clothes.findAll();
+        res.status(200).json(clothesResult);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+
 }
 
 async function getoneclothe(req, res) {
-    const clotheId = parseInt(req.params.id);
-    let oneclothe = await Clothes.findOne({
-        where: {
-            id: clotheId
-        }
-    })
-    res.status(200).json(oneclothe);
+    try{
+
+        const clotheId = parseInt(req.params.id);
+        let oneclothe = await Clothes.findOne({
+            where: {
+                id: clotheId
+            }
+        })
+        res.status(200).json(oneclothe);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 async function createclothe(req,res){
-    let newclothe=req.body;
-    let clotheRe=await Clothes.create(newclothe);
-    res.status(201).json(clotheRe);
+    try{
+
+        let newclothe=req.body;
+        let clotheRe=await Clothes.create(newclothe);
+        res.status(201).json(clotheRe);
+    }catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 async function updateclothe(req,res){
-    let clotheId = parseInt(req.params.id);
-    let upclothe=req.body;
-    let foundclothe=await Clothes.findOne({where: { id:clotheId }});
-    let updatedclothe=await foundclothe.update(upclothe);
-    res.status(201).json(updatedclothe);
+    try{
+
+        let clotheId = parseInt(req.params.id);
+        let upclothe=req.body;
+        let foundclothe=await Clothes.findOne({where: { id:clotheId }});
+        let updatedclothe=await foundclothe.update(upclothe);
+        res.status(201).json(updatedclothe);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 async function deleteclothe(req,res){
-    let clotheId = parseInt(req.params.id);
-    let deleteclothe= await Clothes.destroy({where:{ id:clotheId } });
-    res.status(204).json(deleteclothe);
+    try{
+
+        let clotheId = parseInt(req.params.id);
+        let deleteclothe= await Clothes.destroy({where:{ id:clotheId } });
+        res.status(204).json(deleteclothe);
+    }catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 module.exports=clothesRouter;
