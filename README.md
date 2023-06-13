@@ -1,6 +1,6 @@
 # api-server
 
-### Deployed URL: 
+### Deployed URL: https://apiserveronline.onrender.com/
 ### PR : https://github.com/savanahamood/api-server/pull/3
 
 
